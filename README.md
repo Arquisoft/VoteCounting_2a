@@ -8,7 +8,7 @@ Vote Counting
 
 
 # Authors
-
+* Adrián Iglesias García
 * Jose Labra
 
 
