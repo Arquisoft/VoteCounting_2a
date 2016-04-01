@@ -24,6 +24,5 @@ public class Main {
 //		return new ModelAndView("landing");
 //	}
 
-
-
+	
 }
