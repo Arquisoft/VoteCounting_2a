@@ -32,7 +32,8 @@ public class Voto extends AbstractPersistable<Long> {
 	}
 
 	public void setEleccion(Eleccion eleccion) {
-		this.eleccion = eleccion;
+		if(eleccion != null)
+		  this.eleccion = eleccion;
 	}
 
 	public ColegioElectoral getColegioElectoral() {
@@ -40,7 +41,8 @@ public class Voto extends AbstractPersistable<Long> {
 	}
 
 	public void setColegioElectoral(ColegioElectoral colegioElectoral) {
-		this.colegioElectoral = colegioElectoral;
+		if(colegioElectoral != null)
+		  this.colegioElectoral = colegioElectoral;
 	}
 
 	public boolean isOnline() {
