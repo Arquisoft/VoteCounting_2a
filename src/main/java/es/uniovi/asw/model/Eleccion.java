@@ -15,7 +15,7 @@ public class Eleccion extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger log = LoggerFactory.getLogger(Eleccion.class);
+	//private static final Logger log = LoggerFactory.getLogger(Eleccion.class);
 
 	@Column(nullable = false, unique = true)
 	private String nombre;
@@ -43,8 +43,8 @@ public class Eleccion extends AbstractPersistable<Long> {
 	public void setId(Long id) {
 		if(id > 0)
 		  this.id = id;
-		else
-		  log.error("El id debe ser correcto, mayor que 0");
+		//else
+		 // log.error("El id debe ser correcto, mayor que 0");
 	}
 
 
