@@ -4,9 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -32,8 +29,7 @@ public class Eleccion extends AbstractPersistable<Long> {
 	}
 
 	public void setNombre(String nombre) {
-		if(nombre != null && !nombre.isEmpty())
-		   this.nombre = nombre;
+		this.nombre = nombre;
 	}
 
 	public Long getId() {
@@ -41,10 +37,7 @@ public class Eleccion extends AbstractPersistable<Long> {
 	}
 
 	public void setId(Long id) {
-		if(id > 0)
-		  this.id = id;
-		//else
-		 // log.error("El id debe ser correcto, mayor que 0");
+		this.id = id;
 	}
 
 

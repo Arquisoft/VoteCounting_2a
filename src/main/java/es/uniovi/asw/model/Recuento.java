@@ -19,7 +19,7 @@ public class Recuento extends AbstractPersistable<Long> {
 	private Eleccion eleccion;
 
 	@Column(nullable = false, unique = true)
-	private ColegioElectoral colegioElectoral;
+	private ColegioElectoral colegioElectroral;
 
 	@Column(nullable = false, unique = true)
 	private Long total;
@@ -33,17 +33,15 @@ public class Recuento extends AbstractPersistable<Long> {
 	}
 
 	public void setEleccion(Eleccion eleccion) {
-		if(eleccion != null)
-		  this.eleccion = eleccion;
+		this.eleccion = eleccion;
 	}
 
-	public ColegioElectoral getColegioElectoral() {
-		return colegioElectoral;
+	public ColegioElectoral getColegioElectroral() {
+		return colegioElectroral;
 	}
 
-	public void setColegioElectoral(ColegioElectoral colegioElectoral) {
-		if(colegioElectoral != null)
-		  this.colegioElectoral = colegioElectoral;
+	public void setColegioElectroral(ColegioElectoral colegioElectroral) {
+		this.colegioElectroral = colegioElectroral;
 	}
 
 	public Long getTotal() {
@@ -51,8 +49,7 @@ public class Recuento extends AbstractPersistable<Long> {
 	}
 
 	public void setTotal(Long total) {
-		if (total > 0)
-		  this.total = total;
+		this.total = total;
 	}
 
 }
