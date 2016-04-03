@@ -18,6 +18,11 @@ public class Main {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
+//	@RequestMapping("/")
+//	public ModelAndView landing(Model model) {
+//		LOG.info("Landing page access");
+//		return new ModelAndView("landing");
+//	}
 
 	@RequestMapping("/online")
 	public List<VotoRest> verResultadosOnline(Long eleccionesId) {
@@ -58,6 +63,23 @@ public class Main {
 		vr.add(r);
 		return vr;
 	}
+	//
+	// @RequestMapping("/")
+	// public ModelAndView landing(Model model) {
+	// LOG.info("Landing page access");
+	// return new ModelAndView("landing");
+	// }
+
+	private VotoRest crearVoto() {
+		VotoRest v = new VotoRest();
+		v.setColegioElectoral(generarCE());
+		v.setEleccion("27N");
+		v.setOnline(generarOnline());
+		v.setOpcion(generarOpcion());
+		
+		return v;
+
+	}
 
 	public String generarCE() {
 		String ces[] = { "Ciudad Naranco", "Corredoria", "Lugones" };
@@ -69,7 +91,11 @@ public class Main {
 		return aleatorio(100) > 20;
 	}
 	
-	
+	public String generarOpcion() {
+		String op[] = { "Si", "No", "NULO/BLANCO" };
+
+		return op[aleatorio(3) - 1];
+	}
 
 	private int aleatorio(int max) {
 		return (int) Math.floor(Math.random() * max + 1);
