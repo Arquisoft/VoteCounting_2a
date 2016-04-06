@@ -3,7 +3,8 @@ package es.uniovi.asw.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -29,7 +30,8 @@ public class ColegioElectoral extends AbstractPersistable<Long> {
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		if (nombre != null && !nombre.isEmpty())
+	           this.nombre = nombre;
 	}
 
 	public Long getId() {
@@ -37,7 +39,8 @@ public class ColegioElectoral extends AbstractPersistable<Long> {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		if(id > 0)
+		  this.id = id;
 	}
 
 }
