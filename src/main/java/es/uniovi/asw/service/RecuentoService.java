@@ -6,6 +6,6 @@ import es.uniovi.asw.model.Recuento;
 
 public interface RecuentoService {
 
-	List<Recuento> publicarRecuento();
+	List<Recuento> publicarRecuento(Long idEleccion);
 
 }

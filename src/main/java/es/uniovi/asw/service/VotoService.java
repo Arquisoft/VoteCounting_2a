@@ -1,11 +1,13 @@
 package es.uniovi.asw.service;
 
+import java.util.List;
+
 import es.uniovi.asw.model.Voto;
 
 public interface VotoService {
 
-	Voto obtenerVoto();
+	List<Voto> obtenerVotos(Long eleccionId);
 
-	Voto realizarRecuento();
+	void realizarRecuento(Long eleccionId);
 
 }
