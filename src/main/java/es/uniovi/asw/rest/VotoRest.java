@@ -14,10 +14,10 @@ public class VotoRest implements Serializable {
 
 	}
 
-	public VotoRest(Long eleccion, Long colegioElectoral, String opcion, boolean online) {
+	public VotoRest(String eleccion, String colegioElectoral, String opcion, boolean online) {
 		super();
-		this.eleccion = eleccion + "";
-		this.colegioElectoral = colegioElectoral + "";
+		this.eleccion = eleccion;
+		this.colegioElectoral = colegioElectoral;
 		this.opcion = opcion;
 		this.online = online;
 	}
@@ -27,7 +27,8 @@ public class VotoRest implements Serializable {
 	}
 
 	public void setEleccion(String eleccion) {
-		this.eleccion = eleccion;
+		if(eleccion != null && !eleccion.isEmpty())
+		   this.eleccion = eleccion;
 	}
 
 	public String getColegioElectoral() {
@@ -35,7 +36,8 @@ public class VotoRest implements Serializable {
 	}
 
 	public void setColegioElectoral(String colegioElectoral) {
-		this.colegioElectoral = colegioElectoral;
+		if(colegioElectoral != null && !colegioElectoral.isEmpty())
+		   this.colegioElectoral = colegioElectoral;
 	}
 
 	public String getOpcion() {
@@ -43,7 +45,8 @@ public class VotoRest implements Serializable {
 	}
 
 	public void setOpcion(String opcion) {
-		this.opcion = opcion;
+		if(opcion != null && !opcion.isEmpty())
+		   this.opcion = opcion;
 	}
 
 	public boolean isOnline() {
