@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import es.uniovi.asw.model.Recuento;
 import es.uniovi.asw.model.Voto;
+import es.uniovi.asw.rest.RecuentoRest;
 import es.uniovi.asw.rest.VotoRest;
 import es.uniovi.asw.service.RecuentoService;
 import es.uniovi.asw.service.VotoService;
@@ -64,6 +66,28 @@ public class MainController {
 			return new ModelAndView("error", "error", "Error al realizar recuento " + e);
 		}
 		return new ModelAndView("recuento");
+	}
+
+	@RequestMapping("/estadisticas")
+	public ModelAndView verEstadisticas(Long idEleccion) {
+		LOG.info("verEstadisticas page access");
+
+		List<RecuentoRest> recuento = new ArrayList<RecuentoRest>();
+
+		try {
+			List<Recuento> recuentoModel = this.recuentoService.publicarRecuento(idEleccion);
+
+			RecuentoRest rec = null;
+			for (Recuento r : recuentoModel) {
+				rec = new RecuentoRest(r.getIdEleccion(), r.getOpcion(), r.getTotal());
+				recuento.add(rec);
+			}
+		} catch (Exception e) {
+			LOG.error("Error al recuperar recuento " + e);
+			return new ModelAndView("error", "error", "Error al recuperar recuento " + e);
+		}
+
+		return new ModelAndView("estadisticas", "recuento", recuento);
 	}
 
 }
