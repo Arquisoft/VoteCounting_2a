@@ -3,8 +3,7 @@ package es.uniovi.asw.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -14,44 +13,43 @@ public class Recuento extends AbstractPersistable<Long> {
 	private static final long serialVersionUID = 1L;
 
 	// private static final Logger log = LoggerFactory.getLogger(Eleccion.class);
+	// @OneToMany(fetch = FetchType.EAGER)
+	// private Eleccion eleccion;
 
-	@Column(nullable = false, unique = true)
-	private Eleccion eleccion;
+	@Column(nullable = false)
+	private Long idEleccion;
 
-	@Column(nullable = false, unique = true)
-	private ColegioElectoral colegioElectoral;
+	@Column(nullable = false)
+	private String opcion;
 
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private Long total;
 
 	public Recuento() {
 
 	}
-
-	public Eleccion getEleccion() {
-		return eleccion;
+	
+	public String getOpcion() {
+		return opcion;
 	}
 
-	public void setEleccion(Eleccion eleccion) {
-		if(eleccion != null && !eleccion.isEmpty())
-		    this.eleccion = eleccion;
+	public void setOpcion(String opcion) {
+		this.opcion = opcion;
+	}
+	
+	public Long getIdEleccion() {
+		return idEleccion;
 	}
 
-	public ColegioElectoral getColegioElectoral() {
-		return colegioElectoral;
+	public void setIdEleccion(Long idEleccion) {
+		this.idEleccion = idEleccion;
 	}
-
-	public void setColegioElectoral(ColegioElectoral colegioElectoral) {
-		if(colegioElectoral != null && !colegioElectoral.isEmpty())
-		    this.colegioElectoral = colegioElectoral;
-	}
-
+	
 	public Long getTotal() {
 		return total;
 	}
 
 	public void setTotal(Long total) {
-		if(total > 0)
-		   this.total = total;
+	        this.total = total;
 	}
 }
