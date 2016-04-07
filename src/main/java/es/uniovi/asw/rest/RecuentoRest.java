@@ -13,9 +13,9 @@ public class RecuentoRest implements Serializable {
 
 	}
 
-	public RecuentoRest(String eleccion, String opcion, Long total) {
+	public RecuentoRest(Long eleccion, String opcion, Long total) {
 		super();
-		this.eleccion = eleccion;
+		this.eleccion = eleccion + "";
 		this.opcion = opcion;
 		this.total = total;
 	}
@@ -25,8 +25,7 @@ public class RecuentoRest implements Serializable {
 	}
 
 	public void setEleccion(String eleccion) {
-		if(eleccion != null && !eleccion.isEmpty())
-		   this.eleccion = eleccion;
+		this.eleccion = eleccion;
 	}
 
 	public String getOpcion() {
@@ -34,8 +33,7 @@ public class RecuentoRest implements Serializable {
 	}
 
 	public void setOpcion(String opcion) {
-		if(opcion != null && !opcion.isEmpty())
-		   this.opcion = opcion;
+		this.opcion = opcion;
 	}
 
 	public Long getTotal() {
@@ -43,7 +41,7 @@ public class RecuentoRest implements Serializable {
 	}
 
 	public void setTotal(Long total) {
-		if(total > 0)
-		   this.total = total;
+		this.total = total;
 	}
+
 }
