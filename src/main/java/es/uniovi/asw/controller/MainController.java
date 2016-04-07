@@ -56,16 +56,4 @@ public class MainController {
 		return new ModelAndView("online", "votos", votos);
 	}
 
-	@RequestMapping("/recuento")
-	public ModelAndView realizarRecuento(Long idEleccion) {
-		LOG.info("realizarRecuento page access");
-		try {
-			this.votoService.realizarRecuento(idEleccion);
-		} catch (Exception e) {
-			LOG.error("Error al realizar recuento " + e);
-			return new ModelAndView("error", "error", "Error al realizar recuento " + e);
-		}
-		return new ModelAndView("recuento");
-	}
-
 }
