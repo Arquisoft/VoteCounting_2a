@@ -10,6 +10,7 @@ Vote Counting
 # Authors
 * Adrián Iglesias García
 * Eduardo García Montañés
+* Daniel Arango Antón
 * Jose Labra
 
 
