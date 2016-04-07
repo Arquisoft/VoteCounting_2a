@@ -27,8 +27,7 @@ public class MainController {
 	@Autowired
 	private RecuentoService recuentoService;
 
-	private static final Logger LOG = LoggerFactory
-			.getLogger(MainController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MainController.class);
 
 	@RequestMapping("/")
 	public ModelAndView landing() {
@@ -36,4 +35,25 @@ public class MainController {
 		return new ModelAndView("landing");
 	}
 
+	@RequestMapping("/online")
+	public ModelAndView verResultadosOnline(Long idEleccion) {
+		LOG.info("verResultadosOnline page access");
+		List<VotoRest> votos = new ArrayList<VotoRest>();
+
+		try {
+			List<Voto> votosModel = this.votoService.obtenerVotos(idEleccion);
+
+			VotoRest voto = null;
+			for (Voto v : votosModel) {
+				voto = new VotoRest(v.getIdEleccion(), v.getIdColegio(), v.getOpcion(), v.isOnline());
+				votos.add(voto);
+			}
+		} catch (Exception e) {
+			LOG.error("Error al recuperar votos " + e);
+			return new ModelAndView("error", "error", "Error al recuperar votos " + e);
+		}
+
+		return new ModelAndView("online", "votos", votos);
 	}
+
+}
