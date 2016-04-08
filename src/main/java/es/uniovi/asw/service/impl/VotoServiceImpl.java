@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import es.uniovi.asw.controller.exception.NotValidValueException;
 import es.uniovi.asw.model.Recuento;
 import es.uniovi.asw.model.Voto;
 import es.uniovi.asw.repository.RecuentoRepository;
@@ -26,52 +27,51 @@ public class VotoServiceImpl implements VotoService {
 
 	@Override
 	public List<Voto> obtenerVotos(Long eleccionId) {
-		if (eleccionId == null) {
+		if (eleccionId == null)
 			throw new IllegalArgumentException("eleccionId no puede ser nulo");
-		}
 
 		return this.votoRepository.findByIdEleccion(eleccionId);
 	}
 
 	@Override
 	public void realizarRecuento(Long eleccionId) {
-		if (eleccionId == null) {
+		if (eleccionId == null)
 			throw new IllegalArgumentException("eleccionId no puede ser nulo");
-		}
 
 		this.recuentoRepository.deleteAll();
 
 		List<Voto> votos = this.votoRepository.findByIdEleccion(eleccionId);
 
-		if (votos != null && !votos.isEmpty()) {
-			Map<String, Long> recuento = new HashMap<String, Long>();
-			String op = "";
-			Long total = 0L;
+		if (votos.isEmpty())
+			throw new NotValidValueException(
+					"La lista de votos no puede estar vacía");
 
-			for (Voto v : votos) {
-				op = v.getOpcion();
-				total = recuento.get(op);
-				
-				if (total == null) {
-					total = 0L;
-				}
-				
-				recuento.put(op, total + 1);
-			}
+		Map<String, Long> recuento = new HashMap<String, Long>();
+		String op = "";
+		Long total = 0L;
 
-			Recuento r = null;
-			Iterator<Entry<String, Long>> it = recuento.entrySet().iterator();
-			while (it.hasNext()) {
-				Entry<String, Long> e = it.next();
-				r = new Recuento();
-				r.setIdEleccion(eleccionId);
-				r.setOpcion(e.getKey());
-				r.setTotal(e.getValue());
+		for (Voto v : votos) {
+			op = v.getOpcion();
+			Long temp = recuento.get(op);
 
-				this.recuentoRepository.save(r);
-				r = null;
-			}
+			if (temp != null)
+				total = temp;
+
+			recuento.put(op, total + 1);
 		}
+
+		Recuento r = null;
+		Iterator<Entry<String, Long>> it = recuento.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Long> e = it.next();
+			r = new Recuento();
+			r.setIdEleccion(eleccionId);
+			r.setOpcion(e.getKey());
+			r.setTotal(e.getValue());
+
+			this.recuentoRepository.save(r);
+		}
+
 	}
 
 }

@@ -38,7 +38,6 @@ public class MainController {
 
 	@RequestMapping("/online")
 	public ModelAndView verResultadosOnline(Long idEleccion) {
-
 		LOG.info("verResultadosOnline page access");
 		List<VotoRest> votos = new ArrayList<VotoRest>();
 
