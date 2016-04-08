@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import es.uniovi.asw.controller.exception.NotValidValueException;
 import es.uniovi.asw.model.Recuento;
 import es.uniovi.asw.model.Voto;
 import es.uniovi.asw.rest.RecuentoRest;
@@ -38,11 +37,8 @@ public class MainController {
 	}
 
 	@RequestMapping("/online")
-	public ModelAndView verResultadosOnline(Long idEleccion)
-			throws NotValidValueException {
-		if (idEleccion == null)
-			throw new NotValidValueException(
-					"El valor del id del que obtener votos no es válido");
+	public ModelAndView verResultadosOnline(Long idEleccion) {
+
 		LOG.info("verResultadosOnline page access");
 		List<VotoRest> votos = new ArrayList<VotoRest>();
 
