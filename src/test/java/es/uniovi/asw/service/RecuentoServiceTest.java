@@ -9,9 +9,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import es.uniovi.asw.Application;
+import es.uniovi.asw.service.impl.RecuentoServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringApplicationConfiguration(classes = { Application.class,
+	RecuentoServiceImpl.class })
 @WebAppConfiguration
 @IntegrationTest({ "server.port=0" })
 public class RecuentoServiceTest {
