@@ -11,118 +11,101 @@ import es.uniovi.asw.repository.RecuentoRepository;
 
 public class RecuentoRepositoryImpl implements RecuentoRepository {
 
-	@Override
-	public void deleteAllInBatch() {
-		// TODO Auto-generated method stub
+    public List<Recuento> findAll() {
+	// TODO Auto-generated method stub
+	return null;
+    }
 
-	}
+    public List<Recuento> findAll(Sort sort) {
+	// TODO Auto-generated method stub
+	return null;
+    }
 
-	@Override
-	public void deleteInBatch(Iterable<Recuento> arg0) {
-		// TODO Auto-generated method stub
+    public List<Recuento> findAll(Iterable<Long> ids) {
+	// TODO Auto-generated method stub
+	return null;
+    }
 
-	}
+    public <S extends Recuento> List<S> save(Iterable<S> entities) {
+	// TODO Auto-generated method stub
+	return null;
+    }
 
-	@Override
-	public List<Recuento> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void flush() {
+	// TODO Auto-generated method stub
+	
+    }
 
-	@Override
-	public List<Recuento> findAll(Sort arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public <S extends Recuento> S saveAndFlush(S entity) {
+	// TODO Auto-generated method stub
+	return null;
+    }
 
-	@Override
-	public List<Recuento> findAll(Iterable<Long> arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void deleteInBatch(Iterable<Recuento> entities) {
+	// TODO Auto-generated method stub
+	
+    }
 
-	@Override
-	public void flush() {
-		// TODO Auto-generated method stub
+    public void deleteAllInBatch() {
+	// TODO Auto-generated method stub
+	
+    }
 
-	}
+    public Recuento getOne(Long id) {
+	// TODO Auto-generated method stub
+	return null;
+    }
 
-	@Override
-	public Recuento getOne(Long arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Page<Recuento> findAll(Pageable pageable) {
+	// TODO Auto-generated method stub
+	return null;
+    }
 
-	@Override
-	public <S extends Recuento> List<S> save(Iterable<S> arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public <S extends Recuento> S save(S entity) {
+	// TODO Auto-generated method stub
+	return null;
+    }
 
-	@Override
-	public <S extends Recuento> S saveAndFlush(S arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Recuento findOne(Long id) {
+	// TODO Auto-generated method stub
+	return null;
+    }
 
-	@Override
-	public Page<Recuento> findAll(Pageable arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public boolean exists(Long id) {
+	// TODO Auto-generated method stub
+	return false;
+    }
 
-	@Override
-	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public long count() {
+	// TODO Auto-generated method stub
+	return 0;
+    }
 
-	@Override
-	public void delete(Long arg0) {
-		// TODO Auto-generated method stub
+    public void delete(Long id) {
+	// TODO Auto-generated method stub
+	
+    }
 
-	}
+    public void delete(Recuento entity) {
+	// TODO Auto-generated method stub
+	
+    }
 
-	@Override
-	public void delete(Recuento arg0) {
-		// TODO Auto-generated method stub
+    public void delete(Iterable<? extends Recuento> entities) {
+	// TODO Auto-generated method stub
+	
+    }
 
-	}
+    public void deleteAll() {
+	// TODO Auto-generated method stub
+	
+    }
 
-	@Override
-	public void delete(Iterable<? extends Recuento> arg0) {
-		// TODO Auto-generated method stub
+    public List<Recuento> findByIdEleccion(Long idEleccion) {
+	// TODO Auto-generated method stub
+	return null;
+    }
 
-	}
-
-	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public boolean exists(Long arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Recuento findOne(Long arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <S extends Recuento> S save(S arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Recuento> findByIdEleccion(Long idEleccion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

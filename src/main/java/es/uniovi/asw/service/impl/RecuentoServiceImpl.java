@@ -12,15 +12,14 @@ import es.uniovi.asw.service.RecuentoService;
 @Service
 public class RecuentoServiceImpl implements RecuentoService {
 
-	@Autowired
-	private RecuentoRepository recuentoRepository;
+    @Autowired
+    private RecuentoRepository recuentoRepository;
 
-	@Override
-	public List<Recuento> publicarRecuento(Long idEleccion) {
-		if (idEleccion == null) {
-			throw new IllegalArgumentException("idEleccion no puede ser nulo");
-		}
+    public List<Recuento> publicarRecuento(Long idEleccion) {
+	if (idEleccion == null)
+	    throw new IllegalArgumentException("idEleccion no puede ser nulo");
 
-		return this.recuentoRepository.findByIdEleccion(idEleccion);
-	}
+	return this.recuentoRepository.findByIdEleccion(idEleccion);
+    }
+
 }
