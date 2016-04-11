@@ -34,7 +34,8 @@ public class Recuento extends AbstractPersistable<Long> {
 	}
 
 	public void setOpcion(String opcion) {
-		this.opcion = opcion;
+		if(opcion != null && !opcion.isEmpty())
+		   this.opcion = opcion;
 	}
 	
 	public Long getIdEleccion() {
@@ -42,7 +43,8 @@ public class Recuento extends AbstractPersistable<Long> {
 	}
 
 	public void setIdEleccion(Long idEleccion) {
-		this.idEleccion = idEleccion;
+		if(idEleccion != null && idEleccion > 0)
+		   this.idEleccion = idEleccion;
 	}
 	
 	public Long getTotal() {
@@ -50,6 +52,7 @@ public class Recuento extends AbstractPersistable<Long> {
 	}
 
 	public void setTotal(Long total) {
+		if(total != null && total >= 0)
 	        this.total = total;
 	}
 }

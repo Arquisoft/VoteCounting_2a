@@ -40,7 +40,8 @@ public class Voto extends AbstractPersistable<Long> {
 	}
 
 	public void setOpcion(String opcion) {
-		this.opcion = opcion;
+		if(opcion != null && !opcion.isEmpty())
+		   this.opcion = opcion;
 	}
 
 	public boolean isOnline() {
@@ -56,7 +57,8 @@ public class Voto extends AbstractPersistable<Long> {
 	}
 
 	public void setIdEleccion(Long idEleccion) {
-		this.idEleccion = idEleccion;
+		if(idEleccion != null && idEleccion > 0)
+		   this.idEleccion = idEleccion;
 	}
 	
 	public Long getIdColegio() {
@@ -64,7 +66,8 @@ public class Voto extends AbstractPersistable<Long> {
 	}
 
 	public void setIdColegio(Long idColegio) {
-		this.idColegio = idColegio;
+		if(idColegio != null && idColegio > 0)
+		   this.idColegio = idColegio;
 	}
 
 }
