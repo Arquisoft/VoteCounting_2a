@@ -22,7 +22,8 @@ public class RecuentoPieRest implements Serializable {
 	}
 
 	public void setValue(String value) {
-		this.value = value;
+		if(value != null && !value.isEmpty())
+		   this.value = value;
 	}
 
 	public String getLabel() {
@@ -30,7 +31,8 @@ public class RecuentoPieRest implements Serializable {
 	}
 
 	public void setLabel(String label) {
-		this.label = label;
+		if(label != null && !label.isEmpty())
+		   this.label = label;
 	}
 
 }

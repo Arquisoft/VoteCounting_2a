@@ -1,4 +1,4 @@
-package es.uniovi.asw;
+package es.uniovi.asw.model;
 
 import static org.junit.Assert.*;
 
@@ -7,20 +7,27 @@ import org.junit.Test;
 import es.uniovi.asw.model.ColegioElectoral;
 
 public class ColegioElectoralTest {
+	
+	private ColegioElectoral cE = new ColegioElectoral();
 
 	@Test
-	public void test() {
-		ColegioElectoral cE = new ColegioElectoral();
-		cE.setNombre("Colegio1");
-		assertTrue(cE.getNombre().equals("Colegio1"));
-		cE.setNombre(null);
-		assertFalse(cE.getNombre().equals(null));
+	public void testNombre() {
+		
 		cE.setNombre("Colegio2");
 		assertTrue(cE.getNombre().equals("Colegio2"));
-		assertFalse(cE.getNombre().equals("Colegio3"));
+		
+		cE.setNombre(null);
+		assertFalse(cE.getNombre().equals(null));
+		
+		cE.setNombre("Colegio8");
+		assertTrue(cE.getNombre().equals("Colegio8"));
+		assertFalse(cE.getNombre().equals("Colegio1"));
 		assertFalse(cE.getNombre() == null);
+		
 		cE.setNombre("");
 		assertFalse(cE.getNombre().equals(""));
+		
 	}
 
+	
 }
