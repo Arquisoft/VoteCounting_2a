@@ -26,12 +26,12 @@ public class RecuentoServiceTest {
     RecuentoService recuento;
     @Autowired
     RecuentoRepository repRec;
-    //Eleccion idEleccion = 1;
+    Long idEleccion = 1;
 
     @Test(expected = IllegalArgumentException.class)
     public void realizarRecuentoNuloTest() {
 	if(recuento != null){
-	   recuento.publicarRecuento(new Long(1));
+	   recuento.publicarRecuento((long)1);
 	}
 
     }
