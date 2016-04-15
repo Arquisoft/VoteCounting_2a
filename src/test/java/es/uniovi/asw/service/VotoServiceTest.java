@@ -33,7 +33,7 @@ public class VotoServiceTest {
 	@Autowired
 	RecuentoRepository recuento;
 
-Long eleccionId = 1;
+Long eleccionId = Long.parseLong("1");
 	@Test(expected = IllegalArgumentException.class)
 	public void realizarRecuentoNuloTest() {
 		if(voto != null){
