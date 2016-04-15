@@ -38,8 +38,8 @@ public class RecuentoServiceTest {
 
     @Test(expected = NotValidValueException.class)
     public void realizarRecuentoTest() {
-	assertEquals(repRec.findByIdEleccion(new Long(1)),
-		recuento.publicarRecuento(new Long(1)));
+	assertEquals(repRec.findByIdEleccion(1,
+		recuento.publicarRecuento(1)));
 
     }
 }
