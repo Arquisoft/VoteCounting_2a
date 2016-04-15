@@ -69,5 +69,22 @@ public class VotoRestTest {
 		assertFalse(vr.getOpcion().equals(""));
 		
 	}
+	
+	@Test
+	public void testConstructor(){
+		
+		assertTrue(vr1.getEleccion().equals("1"));
+		assertFalse(vr1.getEleccion().equals("4"));
+		assertFalse(vr1.getEleccion().equals(null));
+		assertTrue(vr1.getColegioElectoral().equals("1"));
+		assertFalse(vr1.getColegioElectoral().equals("2"));
+		assertFalse(vr1.getColegioElectoral().equals(null));
+		assertTrue(vr1.getOpcion().equals("Si"));
+		assertFalse(vr1.getOpcion().equals("No"));
+		assertFalse(vr1.getOpcion().equals(null));
+		assertTrue(vr1.isOnline() == true);
+		assertFalse(vr1.isOnline() == false);	
+		
+	}
 
 }
