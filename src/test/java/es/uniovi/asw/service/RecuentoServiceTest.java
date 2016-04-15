@@ -29,7 +29,9 @@ public class RecuentoServiceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void realizarRecuentoNuloTest() {
-	recuento.publicarRecuento(null);
+	if(recuento != null){
+	recuento.publicarRecuento();
+	}
 
     }
 
