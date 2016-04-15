@@ -33,9 +33,12 @@ public class VotoServiceTest {
 	@Autowired
 	RecuentoRepository recuento;
 
+Long eleccionId = 1;
 	@Test(expected = IllegalArgumentException.class)
 	public void realizarRecuentoNuloTest() {
-		voto.realizarRecuento(null);
+		if(voto != null){
+		voto.realizarRecuento(1);
+		}
 	}
 
 	@Test(expected = NotValidValueException.class)
