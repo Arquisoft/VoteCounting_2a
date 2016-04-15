@@ -49,6 +49,21 @@ public class RecuentoPieRestTest {
 		assertFalse(rpr.getLabel().equals(""));
 		
 	}
+	
+	@Test
+	public void testConstructor(){
+		
+		assertTrue(rpr1.getLabel().equals("Label1"));
+		assertFalse(rpr1.getLabel().equals("Label3"));
+		assertFalse(rpr1.getLabel().equals(null));
+		assertFalse(rpr1.getLabel().equals(""));
+		
+		assertTrue(rpr1.getValue().equals("Value1"));
+		assertFalse(rpr1.getValue().equals("Value3"));
+		assertFalse(rpr1.getValue().equals(null));
+		assertFalse(rpr1.getValue().equals(""));
+		
+	}
 
 
 }
