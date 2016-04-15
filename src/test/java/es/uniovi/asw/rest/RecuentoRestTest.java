@@ -67,4 +67,19 @@ public class RecuentoRestTest {
 		
 	}
 	
+	@Test
+	public void testConstructor(){
+		
+		assertTrue(rr1.getEleccion().equals("2"));
+		assertFalse(rr1.getEleccion().equals("1"));
+		assertFalse(rr1.getEleccion().equals(null));
+		assertTrue(rr1.getOpcion().equals("No"));
+		assertFalse(rr1.getOpcion().equals("Si"));
+		assertFalse(rr1.getOpcion().equals(null));
+		assertTrue(rr1.getTotal().equals((long)50));
+		assertFalse(rr1.getTotal().equals((long)100));
+		assertFalse(rr1.getTotal().equals(null));	
+		
+	}
+	
 }
