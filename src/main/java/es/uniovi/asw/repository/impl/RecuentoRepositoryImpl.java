@@ -17,17 +17,19 @@ public class RecuentoRepositoryImpl implements RecuentoRepository {
     }
 
     public List<Recuento> findAll(Sort sort) {
-	// TODO Auto-generated method stub
+	if(sort == null)return null;
 	return null;
     }
 
     public List<Recuento> findAll(Iterable<Long> ids) {
+    	if(ids==null) return null;
 	// TODO Auto-generated method stub
 	return null;
     }
 
     public <S extends Recuento> List<S> save(Iterable<S> entities) {
-	// TODO Auto-generated method stub
+	if(entities == null) return null;
+    	// TODO Auto-generated method stub
 	return null;
     }
 
@@ -37,12 +39,14 @@ public class RecuentoRepositoryImpl implements RecuentoRepository {
     }
 
     public <S extends Recuento> S saveAndFlush(S entity) {
+    	if(entity== null) return null;
 	// TODO Auto-generated method stub
 	return null;
     }
 
     public void deleteInBatch(Iterable<Recuento> entities) {
-	// TODO Auto-generated method stub
+	if(entities== null) return null;
+    	// TODO Auto-generated method stub
 	
     }
 
@@ -52,26 +56,31 @@ public class RecuentoRepositoryImpl implements RecuentoRepository {
     }
 
     public Recuento getOne(Long id) {
+    	if(id == null) return null;
 	// TODO Auto-generated method stub
 	return null;
     }
 
     public Page<Recuento> findAll(Pageable pageable) {
+    	if(pageable == null) return null;
 	// TODO Auto-generated method stub
 	return null;
     }
 
     public <S extends Recuento> S save(S entity) {
+    	if(entity == null) return null;
 	// TODO Auto-generated method stub
 	return null;
     }
 
     public Recuento findOne(Long id) {
+    	if(id == null) return null;
 	// TODO Auto-generated method stub
 	return null;
     }
 
     public boolean exists(Long id) {
+    	if(id == null) return null;
 	// TODO Auto-generated method stub
 	return false;
     }
@@ -82,6 +91,7 @@ public class RecuentoRepositoryImpl implements RecuentoRepository {
     }
 
     public void delete(Long id) {
+    	if(id == null) return null;
 	// TODO Auto-generated method stub
 	
     }
@@ -92,6 +102,7 @@ public class RecuentoRepositoryImpl implements RecuentoRepository {
     }
 
     public void delete(Iterable<? extends Recuento> entities) {
+    	if(entities == null ) return null;
 	// TODO Auto-generated method stub
 	
     }
@@ -102,6 +113,7 @@ public class RecuentoRepositoryImpl implements RecuentoRepository {
     }
 
     public List<Recuento> findByIdEleccion(Long idEleccion) {
+    	if(idEleccion == null) return null;
 	// TODO Auto-generated method stub
 	return null;
     }
