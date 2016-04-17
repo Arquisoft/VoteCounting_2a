@@ -17,7 +17,7 @@ public class VotoTest {
 		
 		v.setIdColegio((long)2);
 		assertTrue(v.getIdColegio().equals((long)2));
-		assertFalse(v.getIdColegio() == null);
+		assertFalse(v.getIdColegio().equals(null));
 		
 		v.setIdColegio((long)0);
 		assertFalse(v.getIdColegio().equals((long)0));
@@ -36,7 +36,7 @@ public class VotoTest {
 		
 		v.setIdEleccion((long)5);
 		assertTrue(v.getIdEleccion().equals((long)5));
-		assertFalse(v.getIdEleccion() == null);
+		assertFalse(v.getIdEleccion().equals(null));
 		
 		v.setIdEleccion((long)0);
 		assertFalse(v.getIdEleccion().equals((long)0));
@@ -61,12 +61,20 @@ public class VotoTest {
 		
 		v.setOpcion("No");
 		assertTrue(v.getOpcion().equals("No"));
-		assertFalse(v.getOpcion().equals("Ns/Nc"));
-		assertFalse(v.getOpcion() == null);
+		assertFalse(v.getOpcion().equals("Si"));
+		assertFalse(v.getOpcion().equals(null));
 		
 		v.setOpcion("");
 		assertFalse(v.getOpcion().equals(""));
 		
+	}
+	
+	@Test
+	public void testOnline(){
+		
+		v.setOnline(false);
+		assertTrue(v.isOnline() == false);
+		assertFalse(v.isOnline() == true);
 	}
 
 }

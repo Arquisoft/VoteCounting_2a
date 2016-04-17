@@ -17,12 +17,12 @@ public class RecuentoTest {
 		
 		rec.setIdEleccion((long)3);
 		assertTrue(rec.getIdEleccion().equals((long)3));
-		assertFalse(rec.getIdEleccion() == null);
+		assertFalse(rec.getIdEleccion().equals(null));
 		
 		rec.setIdEleccion((long)0);
 		assertFalse(rec.getIdEleccion().equals((long)0));
 		
-		rec.setIdEleccion((long) -1);
+		rec.setIdEleccion((long)-1);
 		assertFalse(rec.getIdEleccion().equals((long)-1));
 		
 		rec.setIdEleccion(null);
@@ -42,8 +42,8 @@ public class RecuentoTest {
 		
 		rec.setOpcion("Si");
 		assertTrue(rec.getOpcion().equals("Si"));
-		assertFalse(rec.getOpcion().equals("Ns/Nc"));
-		assertFalse(rec.getOpcion() == null);
+		assertFalse(rec.getOpcion().equals("No"));
+		assertFalse(rec.getOpcion().equals(null));
 		
 		rec.setOpcion("");
 		assertFalse(rec.getOpcion().equals(""));
@@ -56,7 +56,7 @@ public class RecuentoTest {
 		
 		rec.setTotal((long)60);
 		assertTrue(rec.getTotal().equals((long)60));
-		assertFalse(rec.getTotal() == null);
+		assertFalse(rec.getTotal().equals(null));
 		
 		rec.setTotal((long)0);
 		assertTrue(rec.getTotal().equals((long)0));

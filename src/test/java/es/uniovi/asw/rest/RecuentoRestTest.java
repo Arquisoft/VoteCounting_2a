@@ -9,6 +9,7 @@ import es.uniovi.asw.rest.RecuentoRest;
 public class RecuentoRestTest {
 	
 	private RecuentoRest rr = new RecuentoRest();
+	private RecuentoRest rr1 = new RecuentoRest((long)2,"No", (long)50);
 	
 
 	@Test
@@ -23,7 +24,7 @@ public class RecuentoRestTest {
 		rr.setEleccion("Eleccion7");
 		assertTrue(rr.getEleccion().equals("Eleccion7"));
 		assertFalse(rr.getEleccion().equals("Eleccion3"));
-		assertFalse(rr.getEleccion() == null);
+		assertFalse(rr.getEleccion().equals(null));
 		
 		rr.setEleccion("");
 		assertFalse(rr.getEleccion().equals(""));
@@ -42,7 +43,7 @@ public class RecuentoRestTest {
 		rr.setOpcion("No");
 		assertTrue(rr.getOpcion().equals("No"));
 		assertFalse(rr.getOpcion().equals("Ns/Nc"));
-		assertFalse(rr.getOpcion() == null);
+		assertFalse(rr.getOpcion().equals(null));
 		
 		rr.setOpcion("");
 		assertFalse(rr.getOpcion().equals(""));
@@ -54,7 +55,7 @@ public class RecuentoRestTest {
 		
 		rr.setTotal((long)40);
 		assertTrue(rr.getTotal().equals((long)40));
-		assertFalse(rr.getTotal() == null);
+		assertFalse(rr.getTotal().equals(null));
 		
 		rr.setTotal((long)0);
 		assertTrue(rr.getTotal().equals((long)0));
@@ -73,9 +74,13 @@ public class RecuentoRestTest {
 		assertTrue(rr1.getEleccion().equals("2"));
 		assertFalse(rr1.getEleccion().equals("1"));
 		assertFalse(rr1.getEleccion().equals(null));
+		assertFalse(rr1.getEleccion().equals(""));
+		
 		assertTrue(rr1.getOpcion().equals("No"));
 		assertFalse(rr1.getOpcion().equals("Si"));
 		assertFalse(rr1.getOpcion().equals(null));
+		assertFalse(rr1.getOpcion().equals(""));
+		
 		assertTrue(rr1.getTotal().equals((long)50));
 		assertFalse(rr1.getTotal().equals((long)100));
 		assertFalse(rr1.getTotal().equals(null));	

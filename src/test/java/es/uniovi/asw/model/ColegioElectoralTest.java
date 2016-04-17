@@ -21,8 +21,8 @@ public class ColegioElectoralTest {
 		
 		cE.setNombre("Colegio8");
 		assertTrue(cE.getNombre().equals("Colegio8"));
-		assertFalse(cE.getNombre().equals("Colegio1"));
-		assertFalse(cE.getNombre() == null);
+		assertFalse(cE.getNombre().equals("Colegio2"));
+		assertFalse(cE.getNombre().equals(null));
 		
 		cE.setNombre("");
 		assertFalse(cE.getNombre().equals(""));

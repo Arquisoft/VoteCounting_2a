@@ -23,8 +23,8 @@ public class EleccionTest {
 		
 		e.setNombre("Eleccion1");
 		assertTrue(e.getNombre().equals("Eleccion1"));
-		assertFalse(e.getNombre().equals("Eleccion9"));
-		assertFalse(e.getNombre() == null);
+		assertFalse(e.getNombre().equals("Eleccion3"));
+		assertFalse(e.getNombre().equals(null));
 		
 		e.setNombre("");
 		assertFalse(e.getNombre().equals(""));

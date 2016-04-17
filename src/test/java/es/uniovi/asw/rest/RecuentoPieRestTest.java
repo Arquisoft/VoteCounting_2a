@@ -1,7 +1,6 @@
 package es.uniovi.asw.rest;
 
 import static org.junit.Assert.*;
-
 import es.uniovi.asw.rest.RecuentoPieRest;
 
 import org.junit.Test;
@@ -10,6 +9,7 @@ public class RecuentoPieRestTest {
 	
 	
 	private RecuentoPieRest rpr = new RecuentoPieRest();
+	private RecuentoPieRest rpr1 = new RecuentoPieRest("Label1","Value1");
 
 	
 	@Test
@@ -23,8 +23,8 @@ public class RecuentoPieRestTest {
 		
 		rpr.setValue("Value2");
 		assertTrue(rpr.getValue().equals("Value2"));
-		assertFalse(rpr.getValue().equals("Value4"));
-		assertFalse(rpr.getValue() == null);
+		assertFalse(rpr.getValue().equals("Value1"));
+		assertFalse(rpr.getValue().equals(null));
 		
 		rpr.setValue("");
 		assertFalse(rpr.getValue().equals(""));
@@ -42,8 +42,8 @@ public class RecuentoPieRestTest {
 		
 		rpr.setLabel("Label4");
 		assertTrue(rpr.getLabel().equals("Label4"));
-		assertFalse(rpr.getLabel().equals("Label8"));
-		assertFalse(rpr.getLabel() == null);
+		assertFalse(rpr.getLabel().equals("Label2"));
+		assertFalse(rpr.getLabel().equals(null));
 		
 		rpr.setLabel("");
 		assertFalse(rpr.getLabel().equals(""));
@@ -59,7 +59,7 @@ public class RecuentoPieRestTest {
 		assertFalse(rpr1.getLabel().equals(""));
 		
 		assertTrue(rpr1.getValue().equals("Value1"));
-		assertFalse(rpr1.getValue().equals("Value3"));
+		assertFalse(rpr1.getValue().equals("Value2"));
 		assertFalse(rpr1.getValue().equals(null));
 		assertFalse(rpr1.getValue().equals(""));
 		
