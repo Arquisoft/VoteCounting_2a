@@ -1,100 +1,110 @@
 package es.uniovi.asw.repository;
 
+import static org.junit.Assert.*;
+
 import java.awt.print.Pageable;
-import java.util.List;
 
 import org.junit.Test;
 
+import org.springframework.data.domain.Sort;
+
 import es.uniovi.asw.model.Voto;
+
 import es.uniovi.asw.repository.impl.VotoRepositoryImpl;
 
+
 public class VotoRepositoryTest {
+	
 
 	private VotoRepository voto = new VotoRepositoryImpl();
+	
 
 	@Test
-	public List<Voto> testFindAll() {
-		assertFalse(voto.findAll() == null);
+	public void testFindAll1() {
+		
+		assertTrue(voto.findAll() == null);
+		
 	}
-
+	
 	@Test
-	public List<Voto> testFindAll(Sort sort) {
-		if (sort == null)
-			assertTrue(voto.findAll(sort) == null);
-		else
-			assertFalse(voto.findAll(sort) == null);
+	public void testFindAll2() {
+		
+		Sort sort = null;
+		assertTrue(voto.findAll(sort) == null);
+		
 	}
-
+	
 	@Test
-	public List<Voto> testFindAll(Iterable<Long> ids) {
-		if (ids == null)
-			assertTrue(voto.findAll(ids) == null);
-		else
-			assertFalse(voto.findAll(ids) == null);
+	public void testFindAll3() {
+		
+		Iterable<Long> ids = null;
+		assertTrue(voto.findAll(ids) == null);
+		
 	}
+	
 
 	@Test
-	public <S extends Voto> List<S> testSave(Iterable<S> entities) {
-		if (entities == null)
-			assertTrue(voto.save(entities) == null);
-		else
-			assertFalse(voto.findAll(entities) == null);
+	public <S extends Voto> void testSave() {
+		
+		Iterable<S> entities = null;
+		assertTrue(voto.save((Iterable<S>) entities) == null);
+		
 	}
+	
 
 	@Test
-	public <S extends Voto> S testSaveAndFlush(S entity) {
-		if (entity == null)
-			assertTrue(voto.saveAndFlush(entity) == null);
-		else
-			assertFalse(voto.saveAndFlush(entity) == null);
+	public <S extends Voto> void testSaveAndFlush() {
+		
+		S entity = null;
+		assertTrue(voto.saveAndFlush(entity) == null);
+		
 	}
+	
 
 	@Test
-	public Voto testGetOne(Long id) {
+	public void testGetOne() {
+		
+		Long id = null;
+		assertTrue(voto.getOne(id) == null);
+		
+	}
+	
+
+	@Test
+	public void testFindAll() {
+		
+		Pageable page = null;
+		assertTrue(voto.findAll((Sort) page) == null);
+		
+	}
+	
+
+	@Test
+	public void testFindOne() {
+		
+		Long id = null;
+		assertTrue(voto.findOne(id) == null);
+		
+	}
+	
+
+	@Test
+	public void testExists() {
+		
+		Long id = null;
 		if (id == null)
-			assertTrue(voto.getOne(id) == null);
-		else
-			assertFalse(voto.getOne(id) == null);
+			assertFalse(voto.exists(id));
+		
 	}
+	
 
 	@Test
-	public Page<Voto> testFindAll(Pageable pageable) {
-		if (pageable == null)
-			assertTrue(voto.findAll(pageable) == null);
-		else
-			assertFalse(voto.findAll(pageable) == null);
+	public void testFindByIdEleccion() {
+		
+		Long idEleccion = null;
+		assertTrue(voto.findByIdEleccion(idEleccion) == null);
+		
 	}
-
-	@Test
-	public <S extends Voto> S testSave(S entity) {
-		if (entity == null)
-			assertTrue(voto.save(entity) == null);
-		else
-			assertFalse(voto.findAll(entity) == null);
-	}
-
-	@Test
-	public Voto testFindOne(Long id) {
-		if (id == null)
-			assertTrue(voto.findOne(id) == null);
-		else
-			assertFalse(voto.findOne(id) == null);
-	}
-
-	@Test
-	public boolean testExists(Long id) {
-		if (id == null)
-			assertTrue(voto.exists(id) == null);
-		else
-			assertFalse(voto.exists(id) == null);
-	}
-
-	@Test
-	public List<Voto> testFindByIdEleccion(Long idEleccion) {
-		if (idEleccion == null)
-			assertTrue(voto.findByIdEleccion(idEleccion) == null);
-		else
-			assertFalse(voto.findByIdEleccion(idEleccion) == null);
-	}
+	
 
 }
