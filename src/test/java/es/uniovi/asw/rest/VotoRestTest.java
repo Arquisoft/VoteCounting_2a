@@ -1,7 +1,7 @@
 package es.uniovi.asw.rest;
 
-import static org.junit.Assert.*;
-import es.uniovi.asw.rest.VotoRest;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 

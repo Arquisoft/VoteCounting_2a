@@ -1,10 +1,9 @@
 package es.uniovi.asw.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-
-import es.uniovi.asw.model.Recuento;
 
 public class RecuentoTest {
 	
