@@ -1,6 +1,5 @@
 package es.uniovi.asw.repository;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -69,12 +68,6 @@ public class VotoRepositoryTest {
 
 	}
 
-	@Test
-	public void testCount() {
-
-		assertEquals(voto.count(), 0);
-
-	}
 
 	@Test
 	public void testFindByIdEleccion() {
