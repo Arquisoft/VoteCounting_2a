@@ -10,10 +10,10 @@ import es.uniovi.asw.Application;
 @ContextConfiguration(classes = Application.class, loader = SpringApplicationContextLoader.class)
 @IntegrationTest
 @WebAppConfiguration
-public class LandingSteps extends ParentSteps {
+public class RecuentoSteps extends ParentSteps {
 
-	public LandingSteps() {
-		super("/");
+	public RecuentoSteps() {
+		super("/recuento?idEleccion=1");
 	}
 
 }
