@@ -1,8 +1,6 @@
 
 package es.uniovi.asw.service;
 
-import static org.junit.Assert.assertNull;
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -17,9 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import es.uniovi.asw.Application;
-import es.uniovi.asw.controller.exception.NotValidValueException;
 import es.uniovi.asw.model.Recuento;
 import es.uniovi.asw.repository.VotoRepository;
+import junit.framework.TestCase;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -38,17 +36,14 @@ public class VotoServiceTest {
 		if (eleccionId == null)
 			throw new IllegalArgumentException("eleccionId no puede ser nulo");
 		else
-			votos.findByIdEleccion(eleccionId);
+			TestCase.assertNotNull(votos.findByIdEleccion(eleccionId));
 	}
 
 	@Test
 	public void testRealizarRecuento() {
 
 		if (votos.findByIdEleccion(eleccionId) == null)
-			assertNull(votos.findByIdEleccion(new Long(1)));
-
-		else if (votos.findByIdEleccion(eleccionId).isEmpty())
-			throw new NotValidValueException("La lista de votos no puede estar vacía");
+			TestCase.assertNull(votos.findByIdEleccion(new Long(1)));
 
 		if (eleccionId == null)
 			throw new IllegalArgumentException("eleccionId no puede ser nulo");
@@ -65,7 +60,7 @@ public class VotoServiceTest {
 			r.setOpcion(e.getKey());
 			r.setTotal(e.getValue());
 		}
-
+		TestCase.assertNotNull(it);
 	}
 
 }
