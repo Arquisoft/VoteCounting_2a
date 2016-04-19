@@ -68,18 +68,10 @@ public class RecuentoRepositoryTest {
 	}
 
 	@Test
-	public <S extends Recuento> void testSaveAndFlush() {
-
-		S entity = null;
-		assertTrue(recuento.saveAndFlush(entity) == null);
-
-	}
-
-	@Test
 	public void testGetOne() {
 
 		if (id == null)
-			assertTrue(recuento.getOne(id) == null);
+			assertTrue(recuento.getOne(-1L) == null);
 		else
 			assertFalse(recuento.getOne(id) == null);
 
@@ -96,18 +88,10 @@ public class RecuentoRepositoryTest {
 	}
 
 	@Test
-	public <S extends Recuento> void testSaveS() {
-
-		S entity = null;
-		assertTrue(recuento.save(entity) == null);
-
-	}
-
-	@Test
 	public void testFindOne() {
 
 		if (id == null)
-			assertTrue(recuento.findOne(id) == null);
+			assertTrue(recuento.findOne(-1L) == null);
 		else
 			assertFalse(recuento.findOne(id) == null);
 
@@ -117,7 +101,7 @@ public class RecuentoRepositoryTest {
 	public void testExists() {
 
 		if (id == null)
-			assertFalse(recuento.exists(id));
+			assertFalse(recuento.exists(-1L));
 		else
 			assertTrue(recuento.exists(id));
 
