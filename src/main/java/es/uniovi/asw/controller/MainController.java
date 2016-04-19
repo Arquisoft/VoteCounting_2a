@@ -27,8 +27,7 @@ public class MainController {
 	@Autowired
 	private RecuentoService recuentoService;
 
-	private static final Logger LOG = LoggerFactory
-			.getLogger(MainController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MainController.class);
 
 	@RequestMapping("/")
 	public ModelAndView landing() {
@@ -44,16 +43,16 @@ public class MainController {
 		try {
 			List<Voto> votosModel = this.votoService.obtenerVotos(idEleccion);
 
-			VotoRest voto = null;
-			for (Voto v : votosModel) {
-				voto = new VotoRest(v.getIdEleccion(), v.getIdColegio(),
-						v.getOpcion(), v.isOnline());
-				votos.add(voto);
+			if (votosModel != null && votosModel.size() > 0) {
+				VotoRest voto = null;
+				for (Voto v : votosModel) {
+					voto = new VotoRest(v.getIdEleccion(), v.getIdColegio(), v.getOpcion(), v.isOnline());
+					votos.add(voto);
+				}
 			}
 		} catch (Exception e) {
 			LOG.error("Error al recuperar votos " + e);
-			return new ModelAndView("error", "error",
-					"Error al recuperar votos " + e);
+			return new ModelAndView("error", "error", "Error al recuperar votos " + e);
 		}
 
 		return new ModelAndView("online", "votos", votos);
@@ -66,8 +65,7 @@ public class MainController {
 			this.votoService.realizarRecuento(idEleccion);
 		} catch (Exception e) {
 			LOG.error("Error al realizar recuento " + e);
-			return new ModelAndView("error", "error",
-					"Error al realizar recuento " + e);
+			return new ModelAndView("error", "error", "Error al realizar recuento " + e);
 		}
 		return new ModelAndView("recuento");
 	}
@@ -79,19 +77,16 @@ public class MainController {
 		List<RecuentoRest> recuento = new ArrayList<RecuentoRest>();
 
 		try {
-			List<Recuento> recuentoModel = this.recuentoService
-					.publicarRecuento(idEleccion);
+			List<Recuento> recuentoModel = this.recuentoService.publicarRecuento(idEleccion);
 
 			RecuentoRest rec = null;
 			for (Recuento r : recuentoModel) {
-				rec = new RecuentoRest(r.getIdEleccion(), r.getOpcion(),
-						r.getTotal());
+				rec = new RecuentoRest(r.getIdEleccion(), r.getOpcion(), r.getTotal());
 				recuento.add(rec);
 			}
 		} catch (Exception e) {
 			LOG.error("Error al recuperar recuento " + e);
-			return new ModelAndView("error", "error",
-					"Error al recuperar recuento " + e);
+			return new ModelAndView("error", "error", "Error al recuperar recuento " + e);
 		}
 
 		return new ModelAndView("estadisticas", "recuento", recuento);
