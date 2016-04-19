@@ -17,6 +17,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import es.uniovi.asw.Application;
 import es.uniovi.asw.model.Voto;
+import junit.framework.TestCase;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -67,19 +68,13 @@ public class VotoRepositoryTest {
 
 	}
 
-	@Test
-	public <S extends Voto> void testSaveAndFlush() {
 
-		S entity = null;
-		assertTrue(voto.saveAndFlush(entity) == null);
-
-	}
 
 	@Test
 	public void testGetOne() {
 
 		if (id == null)
-			assertTrue(voto.getOne(id) == null);
+			assertTrue(voto.getOne(-1L) == null);
 		else
 			assertFalse(voto.getOne(id) == null);
 
@@ -98,8 +93,13 @@ public class VotoRepositoryTest {
 	@Test
 	public <S extends Voto> void testSaveS() {
 
-		S entity = null;
-		assertTrue(voto.save(entity) == null);
+		Voto v = new Voto();
+		v.setIdColegio(new Long (1));
+		v.setIdEleccion(new Long(1));
+		v.setOpcion("No");
+		v = this.voto.save(v);
+		
+		TestCase.assertNotNull(v);
 
 	}
 
@@ -107,9 +107,9 @@ public class VotoRepositoryTest {
 	public void testFindOne() {
 
 		if (id == null)
-			assertTrue(voto.findOne(id) == null);
+			TestCase.assertNull(voto.findOne(-1L));
 		else
-			assertFalse(voto.findOne(id) == null);
+			TestCase.assertNotNull(voto.findOne(id));
 
 	}
 
@@ -117,7 +117,7 @@ public class VotoRepositoryTest {
 	public void testExists() {
 
 		if (id == null)
-			assertFalse(voto.exists(id));
+			assertFalse(voto.exists(-1L));
 		else
 			assertTrue(voto.exists(id));
 
