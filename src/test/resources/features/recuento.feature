@@ -1,5 +1,5 @@
-Feature: landing page 
+Feature: recuento page 
   Scenario: client makes call to GET /
     When the client calls /
     Then the client receives status code of 200
-    And the client receives the string "Voting System"
+    And the client receives the string "Recuento realizado de forma correcta"
