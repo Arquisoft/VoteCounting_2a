@@ -17,10 +17,15 @@ public class RecuentoRepositoryTest {
 
 	
 	private RecuentoRepository recuento = new RecuentoRepositoryImpl();
+	private Sort sort;
+	private Iterable<Long> ids;
+	private Long id;
+	private Pageable page = null;
+	private Long idEleccion;
 	
 
 	@Test
-	public void testFindAll1() {
+	public void testFindAll() {
 		
 		assertTrue(recuento.findAll() == null);
 		
@@ -28,28 +33,35 @@ public class RecuentoRepositoryTest {
 
 	
 	@Test
-	public void testFindAll2() {
+	public void testFindAllSort() {
 		
-		Sort sort = null;
-		assertTrue(recuento.findAll(sort) == null);
-		
-	}
-	
-
-	@Test
-	public void testFindAll3() {
-		
-		Iterable<Long> ids = null;
-		assertTrue(recuento.findAll(ids) == null);
+		if(sort == null)
+		   assertTrue(recuento.findAll(sort) == null);
+		else
+			assertFalse(recuento.findAll(sort) == null);
 		
 	}
 	
 
 	@Test
-	public <S extends Recuento> void testSave() {
+	public void testFindAllIds() {
+		
+		if(ids == null)
+		  assertTrue(recuento.findAll(ids) == null);
+		else
+		  assertFalse(recuento.findAll(ids) == null);
+		
+	}
+	
+
+	@Test
+	public <S extends Recuento> void testSaveIterable() {
 		
 		Iterable<S> entities = null;
-		assertTrue(recuento.save((Iterable<S>) entities) == null);
+		if(entities != null)
+			assertFalse(recuento.save((Iterable<S>) entities) == null);
+		else
+		    assertTrue(recuento.save((Iterable<S>) entities) == null);
 		
 	}
 	
@@ -58,7 +70,10 @@ public class RecuentoRepositoryTest {
 	public <S extends Recuento> void testSaveAndFlush() {
 		
 		S entity = null;
-		assertTrue(recuento.saveAndFlush(entity) == null);
+		if(entity != null)
+		  assertFalse(recuento.saveAndFlush(entity) == null);
+		else
+		  assertTrue(recuento.saveAndFlush(entity) == null);
 		
 	}
 	
@@ -66,17 +81,33 @@ public class RecuentoRepositoryTest {
 	@Test
 	public void testGetOne() {
 		
-		Long id = null;
-		assertTrue(recuento.getOne(id) == null);
+		if(id == null)
+			  assertTrue(recuento.getOne(id) == null);
+		else
+			  assertFalse(recuento.getOne(id) == null);
 		
 	}
 	
 
 	@Test
-	public void testFindAll() {
+	public void testFindAllPage() {
 		
-		Pageable page = null;
-		assertTrue(recuento.findAll((Sort) page) == null);
+		if(page == null)
+		   assertTrue(recuento.findAll((Sort) page) == null);
+		else
+			assertFalse(recuento.findAll((Sort) page) == null);
+		
+	}
+	
+	
+	@Test
+	public <S extends Recuento> void testSaveS() {
+		
+		S entity = null;
+		if(entity != null)
+		  assertFalse(recuento.save(entity) == null);
+		else
+		  assertTrue(recuento.save(entity) == null);
 		
 	}
 	
@@ -84,8 +115,10 @@ public class RecuentoRepositoryTest {
 	@Test
 	public void testFindOne() {
 		
-		Long id = null;
-		assertTrue(recuento.findOne(id) == null);
+		if(id == null)
+		   assertTrue(recuento.findOne(id) == null);
+		else
+		   assertFalse(recuento.findOne(id) == null);
 		
 	}
 	
@@ -93,9 +126,18 @@ public class RecuentoRepositoryTest {
 	@Test
 	public void testExists() {
 		
-		Long id = null;
 		if (id == null)
 			assertFalse(recuento.exists(id));
+		else
+			assertTrue(recuento.exists(id));
+		
+	}
+	
+	
+	@Test
+	public void testCount() {
+		
+		assertEquals(recuento.count(),0);
 		
 	}
 	
@@ -103,8 +145,10 @@ public class RecuentoRepositoryTest {
 	@Test
 	public void testFindByIdEleccion() {
 		
-		Long idEleccion = null;
-		assertTrue(recuento.findByIdEleccion(idEleccion) == null);
+		if(idEleccion == null)
+		   assertTrue(recuento.findByIdEleccion(idEleccion) == null);
+		else
+		   assertFalse(recuento.findByIdEleccion(idEleccion) == null);
 		
 	}
 	
