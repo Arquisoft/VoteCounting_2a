@@ -16,20 +16,28 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import es.uniovi.asw.Application;
 import es.uniovi.asw.model.Recuento;
+import es.uniovi.asw.model.Voto;
 import es.uniovi.asw.repository.VotoRepository;
+
 import junit.framework.TestCase;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest({ "server.port=0" })
+
 public class VotoServiceTest {
 
 	@Autowired
 	private VotoRepository votos;
+	
+	@Autowired
+	private VotoService vS;
 
 	private Long eleccionId = (long) 1;
 
+	
 	@Test
 	public void testObtenerVotos() {
 
@@ -37,7 +45,9 @@ public class VotoServiceTest {
 			throw new IllegalArgumentException("eleccionId no puede ser nulo");
 		else
 			TestCase.assertNotNull(votos.findByIdEleccion(eleccionId));
+		
 	}
+	
 
 	@Test
 	public void testRealizarRecuento() {
@@ -60,7 +70,43 @@ public class VotoServiceTest {
 			r.setOpcion(e.getKey());
 			r.setTotal(e.getValue());
 		}
+		
 		TestCase.assertNotNull(it);
 	}
-
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void obtenerVotosIdNuloTest() {
+		
+		Long id = null;
+		Voto v = new Voto();
+		v.setIdColegio(new Long (2));
+		v.setIdEleccion(new Long(1));
+		v.setOpcion("No");
+		v = this.votos.save(v);
+		
+		TestCase.assertTrue(v != null);
+		TestCase.assertTrue(vS != null);
+		vS.obtenerVotos(id);
+			
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void realizarRecuentoIdNuloTest() {
+		
+		Long id = null;
+		Voto v = new Voto();
+		v.setIdColegio(new Long (1));
+		v.setIdEleccion(new Long(1));
+		v.setOpcion("Si");
+		v = this.votos.save(v);
+		
+		TestCase.assertTrue(v != null);
+		TestCase.assertTrue(vS != null);
+		vS.realizarRecuento(id);
+		
+	}
+	
+	
 }

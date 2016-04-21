@@ -45,7 +45,7 @@ public class RecuentoServiceTest {
 		if (recuento != null) {
 			recuento.publicarRecuento(idEleccion);
 		}
-
+			
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -62,5 +62,5 @@ public class RecuentoServiceTest {
 		recuento.publicarRecuento(id);
 		
 		}
-
-}
+		
+	}
