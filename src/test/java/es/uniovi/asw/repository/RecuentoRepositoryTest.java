@@ -58,6 +58,8 @@ public class RecuentoRepositoryTest {
 	public void testCount() {
 
 		assertEquals(recuento.count(), 0);
+		assertFalse(recuento.count() < 0);
+		assertFalse(recuento.count() > 0);
 
 	}
 

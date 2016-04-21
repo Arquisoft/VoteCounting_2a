@@ -38,12 +38,16 @@ public class VotoRepositoryTest {
 	@Test
 	public <S extends Voto> void testSaveS() {
 
-		Voto v = new Voto();
+		Voto v = null;
+		TestCase.assertNull(v);
+		v = new Voto();
 		v.setIdColegio(new Long(1));
 		v.setIdEleccion(new Long(1));
 		v.setOpcion("No");
+		int temp = this.voto.findAll().size();
 		v = this.voto.save(v);
-
+		TestCase.assertTrue(this.voto.findAll().contains(v));
+		TestCase.assertTrue(temp < this.voto.findAll().size());
 		TestCase.assertNotNull(v);
 
 	}
