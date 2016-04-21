@@ -68,7 +68,6 @@ public class VotoRepositoryTest {
 
 	}
 
-
 	@Test
 	public void testFindByIdEleccion() {
 

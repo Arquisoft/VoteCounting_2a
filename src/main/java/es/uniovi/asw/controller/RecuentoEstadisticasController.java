@@ -28,10 +28,8 @@ public class RecuentoEstadisticasController {
 		List<RecuentoPieRest> recuento = new ArrayList<RecuentoPieRest>();
 
 		try {
-			List<Recuento> recuentoModel = this.recuentoService.publicarRecuento(idEleccion);
-
 			RecuentoPieRest rec = null;
-			for (Recuento r : recuentoModel) {
+			for (Recuento r : this.recuentoService.publicarRecuento(idEleccion)) {
 				rec = new RecuentoPieRest(r.getOpcion(), r.getTotal() + "");
 				recuento.add(rec);
 			}
