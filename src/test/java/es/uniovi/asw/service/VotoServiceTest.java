@@ -21,7 +21,6 @@ import es.uniovi.asw.repository.VotoRepository;
 
 import junit.framework.TestCase;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
@@ -31,13 +30,12 @@ public class VotoServiceTest {
 
 	@Autowired
 	private VotoRepository votos;
-	
+
 	@Autowired
 	private VotoService vS;
 
 	private Long eleccionId = (long) 1;
 
-	
 	@Test
 	public void testObtenerVotos() {
 
@@ -45,9 +43,8 @@ public class VotoServiceTest {
 			throw new IllegalArgumentException("eleccionId no puede ser nulo");
 		else
 			TestCase.assertNotNull(votos.findByIdEleccion(eleccionId));
-		
+
 	}
-	
 
 	@Test
 	public void testRealizarRecuento() {
@@ -70,43 +67,52 @@ public class VotoServiceTest {
 			r.setOpcion(e.getKey());
 			r.setTotal(e.getValue());
 		}
-		
+
 		TestCase.assertNotNull(it);
 	}
-	
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void obtenerVotosIdNuloTest() {
-		
+
 		Long id = null;
-		Voto v = new Voto();
-		v.setIdColegio(new Long (2));
+		Voto v = null;
+		TestCase.assertNull(v);
+		v = new Voto();
+		v.setIdColegio(new Long(1));
 		v.setIdEleccion(new Long(1));
 		v.setOpcion("No");
+		int temp = this.votos.findAll().size();
 		v = this.votos.save(v);
-		
+
+		TestCase.assertTrue(this.votos.findAll().contains(v));
+		TestCase.assertTrue(temp < this.votos.findAll().size());
+
 		TestCase.assertTrue(v != null);
 		TestCase.assertTrue(vS != null);
 		vS.obtenerVotos(id);
-			
+
 	}
-	
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void realizarRecuentoIdNuloTest() {
-		
+
 		Long id = null;
-		Voto v = new Voto();
-		v.setIdColegio(new Long (1));
+		Voto v = null;
+		TestCase.assertNull(v);
+		v = new Voto();
+		v.setIdColegio(new Long(1));
 		v.setIdEleccion(new Long(1));
 		v.setOpcion("Si");
+		int temp = this.votos.findAll().size();
 		v = this.votos.save(v);
-		
+
+		TestCase.assertTrue(this.votos.findAll().contains(v));
+		TestCase.assertTrue(temp < this.votos.findAll().size());
+
 		TestCase.assertTrue(v != null);
 		TestCase.assertTrue(vS != null);
 		vS.realizarRecuento(id);
-		
+
 	}
-	
-	
+
 }

@@ -26,7 +26,7 @@ public class RecuentoServiceTest {
 
 	@Autowired
 	RecuentoRepository repRec;
-	
+
 	@Autowired
 	VotoRepository votoRepo;
 
@@ -34,33 +34,44 @@ public class RecuentoServiceTest {
 
 	@Test(expected = NotValidValueException.class)
 	public void realizarRecuentoNuloTest() {
-		Voto v = new Voto();
-		v.setIdColegio(new Long (1));
+		Voto v = null;
+		TestCase.assertNull(v);
+		v = new Voto();
+		v.setIdColegio(new Long(1));
 		v.setIdEleccion(new Long(1));
 		v.setOpcion("No");
+		int temp = this.votoRepo.findAll().size();
 		v = this.votoRepo.save(v);
-		
+
+		TestCase.assertTrue(this.votoRepo.findAll().contains(v));
+		TestCase.assertTrue(temp < this.votoRepo.findAll().size());
+
 		TestCase.assertTrue(v != null);
 		TestCase.assertTrue(recuento != null);
-		if (recuento != null) {
+		if (recuento != null)
 			recuento.publicarRecuento(idEleccion);
-		}
-			
+
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void realizarRecuentoIdNuloTest() {
 		Long id = null;
-		Voto v = new Voto();
-		v.setIdColegio(new Long (1));
+		Voto v = null;
+		TestCase.assertNull(v);
+		v = new Voto();
+		v.setIdColegio(new Long(1));
 		v.setIdEleccion(new Long(1));
 		v.setOpcion("Si");
+		int temp = this.votoRepo.findAll().size();
 		v = this.votoRepo.save(v);
-		
+
+		TestCase.assertTrue(this.votoRepo.findAll().contains(v));
+		TestCase.assertTrue(temp < this.votoRepo.findAll().size());
+
 		TestCase.assertTrue(v != null);
 		TestCase.assertTrue(recuento != null);
 		recuento.publicarRecuento(id);
-		
-		}
-		
+
 	}
+
+}
