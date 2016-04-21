@@ -18,15 +18,14 @@ public class RecuentoServiceImpl implements RecuentoService {
 
 	public List<Recuento> publicarRecuento(Long idEleccion) {
 
-		if (idEleccion == null) {
+		if (idEleccion == null)
 			throw new IllegalArgumentException("idEleccion no puede ser nulo");
-		}
 
 		List<Recuento> temp = this.recuentoRepository.findByIdEleccion(idEleccion);
 
 		if (temp.isEmpty())
 			throw new NotValidValueException("Debe existir al menos un recuento en el repositorio");
-		
+
 		return temp;
 	}
 

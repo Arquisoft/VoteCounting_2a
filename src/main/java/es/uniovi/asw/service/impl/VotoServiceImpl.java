@@ -19,57 +19,56 @@ import es.uniovi.asw.service.VotoService;
 @Service
 public class VotoServiceImpl implements VotoService {
 
-    @Autowired
-    private VotoRepository votoRepository;
+	@Autowired
+	private VotoRepository votoRepository;
 
-    @Autowired
-    private RecuentoRepository recuentoRepository;
+	@Autowired
+	private RecuentoRepository recuentoRepository;
 
-    public List<Voto> obtenerVotos(Long eleccionId) {
-	if (eleccionId == null)
-	    throw new IllegalArgumentException("eleccionId no puede ser nulo");
+	public List<Voto> obtenerVotos(Long eleccionId) {
+		if (eleccionId == null)
+			throw new IllegalArgumentException("eleccionId no puede ser nulo");
 
-	return this.votoRepository.findByIdEleccion(eleccionId);
-    }
-
-    public void realizarRecuento(Long eleccionId) {
-	if (eleccionId == null)
-	    throw new IllegalArgumentException("eleccionId no puede ser nulo");
-
-	this.recuentoRepository.deleteAll();
-
-	List<Voto> votos = this.votoRepository.findByIdEleccion(eleccionId);
-
-	if (votos.isEmpty())
-	    throw new NotValidValueException(
-		    "La lista de votos no puede estar vacía");
-
-	Map<String, Long> recuento = new HashMap<String, Long>();
-	String op = "";
-	Long total = 0L;
-
-	for (Voto v : votos) {
-	    op = v.getOpcion();
-	    Long temp = recuento.get(op);
-
-	    if (temp != null)
-		total = temp;
-
-	    recuento.put(op, total + 1);
+		return this.votoRepository.findByIdEleccion(eleccionId);
 	}
 
-	Recuento r = null;
-	Iterator<Entry<String, Long>> it = recuento.entrySet().iterator();
-	while (it.hasNext()) {
-	    Entry<String, Long> e = it.next();
-	    r = new Recuento();
-	    r.setIdEleccion(eleccionId);
-	    r.setOpcion(e.getKey());
-	    r.setTotal(e.getValue());
+	public void realizarRecuento(Long eleccionId) {
+		if (eleccionId == null)
+			throw new IllegalArgumentException("eleccionId no puede ser nulo");
 
-	    this.recuentoRepository.save(r);
+		this.recuentoRepository.deleteAll();
+
+		List<Voto> votos = this.votoRepository.findByIdEleccion(eleccionId);
+
+		if (votos.isEmpty())
+			throw new NotValidValueException("La lista de votos no puede estar vacía");
+
+		Map<String, Long> recuento = new HashMap<String, Long>();
+		String op = "";
+		Long total = 0L;
+
+		for (Voto v : votos) {
+			op = v.getOpcion();
+			Long temp = recuento.get(op);
+
+			if (temp != null)
+				total = temp;
+
+			recuento.put(op, total + 1);
+		}
+
+		Recuento r = null;
+		Iterator<Entry<String, Long>> it = recuento.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Long> e = it.next();
+			r = new Recuento();
+			r.setIdEleccion(eleccionId);
+			r.setOpcion(e.getKey());
+			r.setTotal(e.getValue());
+
+			this.recuentoRepository.save(r);
+		}
+
 	}
-
-    }
 
 }
