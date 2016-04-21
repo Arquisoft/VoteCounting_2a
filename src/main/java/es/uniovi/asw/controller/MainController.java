@@ -77,10 +77,9 @@ public class MainController {
 		List<RecuentoRest> recuento = new ArrayList<RecuentoRest>();
 
 		try {
-			List<Recuento> recuentoModel = this.recuentoService.publicarRecuento(idEleccion);
 
 			RecuentoRest rec = null;
-			for (Recuento r : recuentoModel) {
+			for (Recuento r : this.recuentoService.publicarRecuento(idEleccion)) {
 				rec = new RecuentoRest(r.getIdEleccion(), r.getOpcion(), r.getTotal());
 				recuento.add(rec);
 			}
