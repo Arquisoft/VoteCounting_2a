@@ -48,19 +48,19 @@ public class RecuentoServiceTest {
 
 	}
 	
-//	@Test(expected = IllegalArgumentException.class)
-//	public void realizarRecuentoIdNuloTest() {
-	//	Long id = null;
-	//	Voto v = new Voto();
-	//	v.setIdColegio(new Long (1));
-	//	v.setIdEleccion(new Long(1));
-	//	v.setOpcion("Si");
-	//	v = this.votoRepo.save(v);
-	//	
-	//	TestCase.assertTrue(v != null);
-	//	TestCase.assertTrue(recuento != null);
-	//	recuento.publicarRecuento(id);
+	@Test(expected = IllegalArgumentException.class)
+	public void realizarRecuentoIdNuloTest() {
+		Long id = null;
+		Voto v = new Voto();
+		v.setIdColegio(new Long (1));
+		v.setIdEleccion(new Long(1));
+		v.setOpcion("Si");
+		v = this.votoRepo.save(v);
 		
-	//	}
+		TestCase.assertTrue(v != null);
+		TestCase.assertTrue(recuento != null);
+		recuento.publicarRecuento(id);
+		
+		}
 
 }
