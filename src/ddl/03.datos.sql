@@ -36,3 +36,7 @@ INSERT INTO `counters`.`voto` (`id_colegio`,`id_eleccion`,`online`,`opcion`) VAL
 INSERT INTO `counters`.`voto` (`id_colegio`,`id_eleccion`,`online`,`opcion`) VALUES (2, 1, 0, 'Nulo');
 INSERT INTO `counters`.`voto` (`id_colegio`,`id_eleccion`,`online`,`opcion`) VALUES (1, 1, 1, 'Sí');
 INSERT INTO `counters`.`voto` (`id_colegio`,`id_eleccion`,`online`,`opcion`) VALUES (1, 1, 1, 'No');
+INSERT INTO `counters`.`voto` (`id_colegio`,`id_eleccion`,`online`,`opcion`) VALUES (2, 1, 0, 'Nulo');
+INSERT INTO `counters`.`voto` (`id_colegio`,`id_eleccion`,`online`,`opcion`) VALUES (2, 1, 0, 'Sí');
+INSERT INTO `counters`.`voto` (`id_colegio`,`id_eleccion`,`online`,`opcion`) VALUES (1, 1, 1, 'No');
+
