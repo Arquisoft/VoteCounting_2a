@@ -3,6 +3,7 @@ INSERT INTO `counters`.`colegio_electoral`(`id`,`nombre`) VALUES (2, 'La Corredo
 
 INSERT INTO `counters`.`eleccion`(`id`,`nombre`) VALUES (1, '27N');
 INSERT INTO `counters`.`eleccion`(`id`,`nombre`) VALUES (2, '4A');
+INSERT INTO `counters`.`eleccion`(`id`,`nombre`) VALUES (3, '5O');
 
 INSERT INTO `counters`.`voto` (`id_colegio`,`id_eleccion`,`online`,`opcion`) VALUES (1, 1, 1, 'Sí');
 INSERT INTO `counters`.`voto` (`id_colegio`,`id_eleccion`,`online`,`opcion`) VALUES (1, 1, 1, 'No');
